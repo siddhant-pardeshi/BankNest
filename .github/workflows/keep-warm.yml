@@ -2,6 +2,8 @@ name: Keep-warm ping
 
 # Pings the BankNest API every 10 minutes so the free-tier Render
 # service stays warm and users never hit a 60s cold start.
+# Best-effort by design: a ping that times out during a redeploy
+# must not mark the repository red.
 
 on:
   schedule:
@@ -15,4 +17,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping API health endpoint
-        run: curl -fsS --max-time 30 https://banknest-api.onrender.com/api/health
+        continue-on-error: true
+        run: curl -fsS --max-time 90 https://banknest-api.onrender.com/api/health
