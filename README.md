@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/assets/banner.svg" alt="BankNest — Digital Banking Platform" width="100%" />
+
 # 🏦 BankNest
 
 **A modern digital banking platform — built end-to-end with Spring Boot & React.**
